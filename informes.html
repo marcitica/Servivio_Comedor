@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Informes del comedor</title><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="informes.css"></head>
+<body><header><img src="logo.jpeg" width="80" alt="Emblema del sistema de comedor"><h1>CTP Cañas</h1><h2>Informes y estadísticas del comedor</h2></header><main>
+<section class="card controles"><a href="administracion.html">Volver a administración</a><h3>Consultar información</h3>
+<form id="acceso"><label for="cedula">Cédula docente</label><input id="cedula" required autocomplete="username"><label for="clave">Contraseña</label><input id="clave" type="password" required autocomplete="current-password"><button>Actualizar informes</button></form>
+<p id="mensaje" role="status">Ingrese sus credenciales docentes para consultar los informes.</p>
+<label for="nivel">Nivel</label><select id="nivel"><option value="">Todos</option><option>7</option><option>8</option><option>9</option><option>10</option><option>11</option><option>12</option><option>Sin nivel</option></select>
+<label for="seccionInforme">Sección</label><select id="seccionInforme"><option value="">Todas</option></select>
+<label for="estadoInforme">Estado</label><select id="estadoInforme"><option value="">Todos</option><option>Aceptada</option><option>Pendiente</option><option>Corrección pendiente</option><option>Corregida</option><option>Rechazada</option></select>
+<label for="fechaInforme">Fecha de la notificación</label><input id="fechaInforme" type="date" required>
+<label for="docenteInforme">Nombre del docente</label><input id="docenteInforme">
+<button id="imprimir" disabled>Imprimir / guardar PDF</button><button id="csv" disabled>Descargar estadísticas CSV</button></section>
+<div id="resultado" hidden><section class="card"><h3>Estadísticas por nivel y categoría socioeconómica</h3><p id="alcance"></p><p>Se utilizan los límites de ingreso per cápita del sistema. Sin información indica datos familiares incompletos. Cada fila corresponde a una solicitud.</p><div class="tabla-scroll"><table><thead><tr><th>Nivel</th><th>Categoría</th><th>Hombres</th><th>Mujeres</th><th>Sin género registrado</th><th>Total</th></tr></thead><tbody id="estadisticas"></tbody></table></div></section><div id="notificaciones"></div></div>
+</main><script src="informes.js"></script></body></html>

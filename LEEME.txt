@@ -1,0 +1,17 @@
+PROYECTO ACTUALIZADO — CTP CAÑAS
+
+1. Esta carpeta es una copia de “página ultima actualización”. Los originales permanecen en su ubicación.
+2. Copie su archivo backend/.env original dentro de backend/.env de esta copia. No se incluyeron credenciales, node_modules ni archivos adjuntos de estudiantes.
+3. Si sustituye su proyecto con esta versión, conserve su carpeta uploads y su configuración original.
+4. En backend ejecute npm install y luego node server.js. Se necesita la misma base MongoDB y configuración del proyecto original.
+5. Abra administracion.html y pulse “Abrir informes y estadísticas”, o abra informes.html directamente. Ingrese las credenciales de un docente ya registrado.
+6. Use los filtros de nivel, sección y estado. Puede descargar estadísticas CSV (compatible con Excel) o imprimir/guardar PDF.
+
+Las notificaciones usan el contenido institucional de los dos documentos adjuntos, que contienen el mismo informe. Se generan con datos reales de solicitudes Aceptadas, agrupadas por sección. El nombre se conserva completo porque el sistema no tiene campos separados de apellidos; no se adivinan apellidos ni género ni se importan los estudiantes del ejemplo.
+
+“Categoría” se interpreta como clasificación socioeconómica: Pobreza extrema, Pobreza, Vulnerabilidad y No pobre. Se mantienen los límites existentes en server.js. Sin información recoge grupos familiares incompletos; Sin género registrado y Sin nivel evitan perder registros en los totales. Los filtros se aplican tanto al resumen como a las notificaciones. Un filtro distinto de Aceptada puede dejar las notificaciones vacías.
+
+Archivos añadidos: informes.html, informes.css, informes.js, backend/informes.js.
+Archivos modificados: administracion.html (acceso), backend/server.js (consulta con validación docente), docente.js (eliminación de marcas de bloque de código inválidas).
+
+Verificación: sintaxis JavaScript y pruebas de límites de categorías, datos incompletos, extracción de nivel y conservación de cédulas. No se conectó a la base de datos ni se enviaron correos. Pendiente prueba del flujo con MongoDB y sus credenciales locales.

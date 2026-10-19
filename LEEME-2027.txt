@@ -1,0 +1,11 @@
+FICHA 2027 Y PUBLICACIÓN
+
+Abra ficha2027.html desde Administración. Contiene las tablas y el texto del archivo Word, con celdas editables y espacios para completar e imprimir / guardar PDF. Se incluye el Word original para conservar su maquetación exacta. La versión HTML no garantiza idéntica paginación.
+
+La carga de PDF permite consultar el archivo en el navegador y abrirlo para imprimir. No extrae datos automáticamente ni sube el documento a un servidor; se descarta al cerrar la página. Los cambios de la ficha tampoco se guardan automáticamente: use guardar PDF.
+
+Publicación pendiente: la conexión GitHub no tiene acceso al repositorio Belldandy88/belldandy88.github.io (404). No se ha publicado ningún archivo.
+GitHub Pages solo sirve archivos estáticos. El backend Node/MongoDB del proyecto debe alojarse en un servicio HTTPS aparte; sus rutas actuales siguen apuntando a localhost:3000 y no funcionan como recepción institucional desde GitHub Pages.
+No suba archivos .env, expedientes de estudiantes o uploads al repositorio público.
+
+Verificación: sintaxis JavaScript correcta. No se pudo convertir Word para comparar visualmente porque no hay LibreOffice instalado. La paginación impresa requiere revisión.

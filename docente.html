@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+  <meta charset="UTF-8">
+
+  <title>Acceso Docente</title>
+
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<header>
+
+  <h1>Colegio Técnico Profesional Cañas</h1>
+
+  <h2>Sistema de Comedor Estudiantil</h2>
+
+  <p>Acceso para docentes</p>
+
+</header>
+
+<main class="contenedor-login">
+
+  <!-- LOGIN -->
+
+  <section class="card card-box">
+
+    <h3>Iniciar Sesión</h3>
+
+    <label>Cédula</label>
+
+    <input
+      type="text"
+      id="cedulaDocenteLogin"
+      oninput="this.value = this.value.replace(/[^0-9]/g,'')"
+    >
+
+    <label>Contraseña</label>
+
+    <input
+      type="password"
+      id="passwordDocenteLogin"
+    >
+
+    <button onclick="loginDocente()">
+      Ingresar
+    </button>
+
+<label style="margin-top:25px;">
+  Cédula del estudiante a revisar
+</label>
+
+<input
+  type="text"
+  id="cedulaEstudiante"
+  oninput="this.value = this.value.replace(/[^0-9]/g,'')"
+>
+
+
+    <hr style="margin:30px 0;">
+
+    <p style="text-align:center;">
+      ¿No tiene cuenta?
+    </p>
+
+    <button
+  type="button"
+  onclick="mostrarRegistro()"
+  class="btn-secundario"
+>
+  Registrarse
+</button>
+
+  </section>
+
+  <!-- REGISTRO -->
+
+  <section
+    class="card card-box"
+    id="registroDocente"
+    style="display:none;"
+  >
+
+    <h3>Registro Docente</h3>
+
+    <label>Nombre completo</label>
+
+    <input
+      type="text"
+      id="nombreDocente"
+    >
+
+    <label>Cédula</label>
+
+    <input
+      type="text"
+      id="cedulaDocenteRegistro"
+      oninput="this.value = this.value.replace(/[^0-9]/g,'')"
+    >
+
+    <button onclick="registrarDocente()">
+      Registrarse
+    </button>
+
+    <button
+      type="button"
+      onclick="ocultarRegistro()"
+      style="background:#777;"
+    >
+      Cancelar
+    </button>
+
+  </section>
+
+</main>
+
+<footer>
+
+  <p>CTP Cañas | Ministerio de Educación Pública</p>
+
+</footer>
+
+<script>
+
+function mostrarRegistro() {
+
+  document.getElementById("registroDocente").style.display = "block";
+}
+
+function ocultarRegistro() {
+
+  document.getElementById("registroDocente").style.display = "none";
+}
+
+async function loginDocente() {
+
+  const cedulaDocente =
+    document.getElementById("cedulaDocenteLogin").value;
+
+  const password =
+    document.getElementById("passwordDocenteLogin").value;
+
+  const cedulaEstudiante =
+    document.getElementById("cedulaEstudiante").value;
+
+  try {
+
+    const respuesta = await fetch(
+      "http://localhost:3000/login-docente",
+      {
+        method: "POST",
+
+        headers: {
+          "Content-Type": "application/json"
+        },
+
+        body: JSON.stringify({
+          cedulaDocente,
+          password
+        })
+      }
+    );
+
+    const resultado = await respuesta.json();
+
+    alert(resultado.mensaje);
+
+    if (respuesta.ok) {
+
+      alert("Cedula ingresada: " + cedulaEstudiante);
+
+      localStorage.setItem(
+        "cedulaEstudiante",
+        cedulaEstudiante
+      );
+
+      localStorage.setItem(
+        "docente",
+        JSON.stringify(resultado.usuario)
+      );
+
+      window.location.href = "administracion.html";
+    }
+
+  } catch (error) {
+
+    console.log(error);
+
+    alert("Error al iniciar sesión");
+  }
+}
+async function registrarDocente() {
+
+  const nombre =
+    document.getElementById("nombreDocente").value;
+
+  const cedula =
+    document.getElementById("cedulaDocenteRegistro").value;
+
+  try {
+
+    const respuesta = await fetch(
+      "http://localhost:3000/registro-docente",
+      {
+
+        method: "POST",
+
+        headers: {
+          "Content-Type": "application/json"
+        },
+
+        body: JSON.stringify({
+
+          nombre,
+          cedula
+        })
+      }
+    );
+
+    const resultado = await respuesta.json();
+
+    alert(resultado.mensaje);
+
+  } catch(error){
+
+    console.log(error);
+
+    alert("Error al registrar docente");
+  }
+}
+
+</script>
+
+</body>
+</html>

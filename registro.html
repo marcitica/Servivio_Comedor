@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Registro de Usuario</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<header>
+
+    <h1>Colegio Técnico Profesional Cañas</h1>
+
+    <h2>Registro de Usuario</h2>
+
+    <p>Sistema de Solicitud de Comedor Estudiantil</p>
+
+</header>
+
+<main class="contenedor-login">
+
+    <!-- LOGIN -->
+
+    <section class="card card-box" id="loginCard">
+
+        <h3>Iniciar Sesión</h3>
+
+        <label>Número de identificación</label>
+
+        <input
+            type="text"
+            id="loginCedula"
+            maxlength="20"
+            oninput="this.value = this.value.replace(/[^0-9]/g,'')"
+        >
+
+        <label>Contraseña</label>
+
+        <input
+            type="password"
+            id="loginPassword"
+        >
+
+        <button
+            type="button"
+            onclick="iniciarSesion()"
+        >
+            Ingresar
+        </button>
+
+        <hr style="margin:30px 0;">
+
+        <p style="text-align:center;">
+            ¿No ha ingresado anteriormente?
+        </p>
+
+        <button
+            type="button"
+            onclick="mostrarVerificacion()"
+        >
+            Verificar estudiante
+        </button>
+
+    </section>
+
+    <!-- VERIFICACIÓN -->
+
+    <section
+        class="card card-box"
+        id="verificacionEstudiante"
+        style="display:none;"
+    >
+
+        <form id="registroForm">
+
+            <h3>Verificación del Estudiante</h3>
+
+            <label>Nombre completo del estudiante</label>
+
+            <input
+                type="text"
+                id="nombre"
+                required
+            >
+
+            <label>Número de cédula</label>
+
+            <input
+                type="text"
+                id="cedula"
+                maxlength="20"
+                required
+                oninput="this.value=this.value.replace(/[^0-9]/g,'')"
+            >
+
+            <button
+                type="submit"
+                class="guardar"
+            >
+                Verificar
+            </button>
+
+            <button
+                type="button"
+                onclick="ocultarVerificacion()"
+                style="background:#777;"
+            >
+                Cancelar
+            </button>
+
+        </form>
+
+    </section>
+
+    <section
+        class="perfil-card card"
+        id="perfilCard"
+        style="display:none;"
+    >
+
+        <h2>Perfil del Estudiante</h2>
+
+        <div class="perfil-info">
+
+            <div class="dato">
+
+                <h4>👤 Nombre</h4>
+
+                <span id="perfilNombre"></span>
+
+            </div>
+
+            <div class="dato">
+
+                <h4>🆔 Cédula</h4>
+
+                <span id="perfilCedula"></span>
+
+            </div>
+
+            <div class="dato">
+
+                <h4>📄 Estado de la solicitud</h4>
+
+                <span id="perfilEstado">
+                    Sin solicitud
+                </span>
+
+            </div>
+
+        </div>
+
+        <button
+            type="button"
+            id="btnFormulario"
+            onclick="irFormulario()"
+        >
+            Realizar solicitud
+        </button>
+
+        <button
+            type="button"
+            id="btnCorregir"
+            onclick="irFormulario()"
+            style="display:none;"
+        >
+            Corregir solicitud
+        </button>
+
+    </section>
+
+</main>
+
+<footer>
+
+    <p>CTP Cañas | Ministerio de Educación Pública</p>
+
+</footer>
+
+<script src="registro.js"></script>
+
+</body>
+
+</html>

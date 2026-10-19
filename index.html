@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <title>Ficha Socioeconómica 2026</title>
+
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<header>
+
+  <h1>Colegio Técnico Profesional Cañas</h1>
+
+  <h2>Ficha Socioeconómica 2026</h2>
+
+  <p>Solicitud del Beneficio de Comedor Estudiantil</p>
+
+</header>
+
+<main><section class="card"><h3>Servivio_Comedor</h3><p><a href="ficha2027.html">Ficha 2027: completar, consultar PDF e imprimir</a></p><p><a href="informes.html">Informes y estadísticas</a></p></section>
+
+  <form id="formulario">
+
+    <!-- CONTADOR DE CORRECCIONES -->
+    <div
+      id="contadorCorrecciones"
+      class="card"
+      style="display:none; background:#fff3cd; border-left:8px solid #f59e0b;"
+    >
+
+      <h3>Correcciones pendientes</h3>
+
+      <p id="textoContador"></p>
+
+    </div>
+
+    <!-- MENSAJE DEL DOCENTE -->
+    <div
+      id="mensajeCorreccion"
+      class="card"
+      style="display:none; border:2px solid orange;"
+    >
+
+      <h3>Corrección solicitada</h3>
+
+      <p id="textoCorreccion"></p>
+
+    </div>
+    <!-- DATOS DEL SOLICITANTE -->
+
+    <section class="card" id="seccionEstudiante">
+
+      <h3>1. Datos del Solicitante</h3>
+
+      <label>Nombre completo</label>
+
+      <input type="text" id="nombreSolicitante" required>
+
+      <label>Género</label>
+
+      <select id="generoSolicitante">
+
+        <option value="">Seleccione</option>
+
+        <option>Masculino</option>
+
+        <option>Femenino</option>
+
+      </select>
+
+      <label>Nacionalidad</label>
+
+      <input type="text" id="nacionalidadSolicitante">
+
+      <label>Número de identificación</label>
+
+      <input 
+        type="text"
+        id="identificacionSolicitante"
+        maxlength="20"
+        required
+        oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+      >
+
+      <label>Edad</label>
+
+      <input type="number" id="edadSolicitante">
+
+      <label>Fecha de nacimiento</label>
+
+      <input type="date" id="fechaNacimiento">
+
+      <label>Teléfono</label>
+
+      <input 
+        type="tel"
+        id="telefonoSolicitante"
+        maxlength="8"
+        pattern="[0-9]{8}"
+        oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+      >
+
+      <label>Sección</label>
+
+      <select id="seccion" required>
+
+        <option value="">Seleccione una sección</option>
+
+        <option>7-1</option>
+        <option>7-2</option>
+        <option>7-3</option>
+        <option>7-4</option>
+
+        <option>8-1</option>
+        <option>8-2</option>
+        <option>8-3</option>
+        <option>8-4</option>
+
+        <option>9-1</option>
+        <option>9-2</option>
+        <option>9-3</option>
+        <option>9-4</option>
+
+        <option>10-1</option>
+        <option>10-2</option>
+        <option>10-3</option>
+        <option>10-4</option>
+
+        <option>11-1</option>
+        <option>11-2</option>
+        <option>11-3</option>
+        <option>11-4</option>
+
+        <option>12-1</option>
+        <option>12-2</option>
+        <option>12-3</option>
+        <option>12-4</option>
+
+      </select>
+
+    </section>
+
+    <!-- DATOS ENCARGADO -->
+
+   <section class="card" id="seccionEncargado">
+
+      <h3>2. Datos del Encargado Legal</h3>
+
+      <label>Nombre completo</label>
+
+      <input type="text" id="nombreEncargado" required>
+
+      <label>Género</label>
+
+      <select id="generoEncargado">
+
+        <option value="">Seleccione</option>
+
+        <option>Masculino</option>
+
+        <option>Femenino</option>
+
+      </select>
+
+      <label>Nacionalidad</label>
+
+      <input type="text" id="nacionalidadEncargado">
+
+      <label>Número de identificación</label>
+
+      <input 
+        type="text"
+        id="identificacionEncargado"
+        maxlength="20"
+        oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+      >
+
+      <label>Teléfono</label>
+
+      <input 
+        type="tel"
+        id="telefonoEncargado"
+        maxlength="8"
+        pattern="[0-9]{8}"
+        oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+      >
+
+      <label>Correo electrónico</label>
+
+      <input type="email" id="correoEncargado" required>
+
+    </section>
+
+    <!-- DIRECCIÓN -->
+
+    <section class="card" id="seccionDireccion">
+
+      <h3>3. Dirección del Grupo Familiar</h3>
+
+      <div class="grid-3">
+
+        <div>
+
+          <label>Provincia</label>
+
+          <select id="provincia" onchange="cargarCantones()">
+
+            <option value="">Seleccione provincia</option>
+
+          </select>
+
+        </div>
+
+        <div>
+
+          <label>Cantón</label>
+
+          <select id="canton" onchange="cargarDistritos()">
+
+            <option value="">Seleccione cantón</option>
+
+          </select>
+
+        </div>
+
+        <div>
+
+          <label>Distrito</label>
+
+          <select id="distrito">
+
+            <option value="">Seleccione distrito</option>
+
+          </select>
+
+        </div>
+
+      </div>
+
+      <label>Comunidad o barrio</label>
+
+      <input type="text" id="comunidad">
+
+      <label>Dirección exacta</label>
+
+      <textarea id="direccionExacta"></textarea>
+
+      <label>Distancia en kilómetros al centro educativo</label>
+
+      <!-- ESTE ERA EL ERROR -->
+      <input type="number" id="distanciaKm">
+
+    </section>
+
+    <!-- AYUDAS -->
+
+    <section class="card" id="seccionAyudas">
+
+      <h3>4. Ayudas del Estado</h3>
+
+      <table id="tablaAyudas">
+
+        <thead>
+
+          <tr>
+
+            <th>¿Recibe ayuda?</th>
+
+            <th>Nombre de la persona</th>
+
+            <th>Tipo de ayuda</th>
+
+            <th>Monto</th>
+
+            <th>Detalle adicional</th>
+
+            <th>Acción</th>
+
+          </tr>
+
+        </thead>
+
+        <tbody>
+
+          <tr>
+
+            <td>
+
+              <select onchange="toggleAyuda(this)">
+
+                <option value="No">No</option>
+
+                <option value="Sí">Sí</option>
+
+              </select>
+
+            </td>
+
+            <td>
+
+              <input
+                type="text"
+                placeholder="Nombre completo"
+                disabled
+              >
+
+            </td>
+
+            <td>
+
+              <select disabled>
+
+                <option>Ninguna</option>
+
+                <option>CRECEMOS</option>
+
+                <option>AVANCEMOS</option>
+
+                <option>Otra</option>
+
+              </select>
+
+            </td>
+
+            <td>
+
+              <input type="number" value="0" disabled>
+
+            </td>
+
+            <td>
+
+              <input
+                type="text"
+                placeholder="Especifique"
+                disabled
+              >
+
+            </td>
+
+            <td>
+
+              <button
+                type="button"
+                class="btn-delete"
+                onclick="eliminarAyuda(this)"
+              >
+                Eliminar
+              </button>
+
+            </td>
+
+          </tr>
+
+        </tbody>
+
+      </table>
+
+      <button
+        type="button"
+        class="btn"
+        onclick="agregarAyuda()"
+      >
+        Agregar ayuda
+      </button>
+
+    </section>
+
+    <!-- GRUPO FAMILIAR -->
+
+    <section class="card" id="seccionGrupo">
+
+      <h3>5. Grupo Familiar</h3>
+
+      <table id="tablaFamilia">
+
+        <thead>
+
+          <tr>
+
+            <th>Nombre</th>
+
+            <th>Cédula</th>
+
+            <th>Edad</th>
+
+            <th>Parentesco</th>
+
+            <th>Escolaridad</th>
+
+            <th>Ocupación</th>
+
+            <th>Ingreso mensual</th>
+
+            <th>Acción</th>
+
+          </tr>
+
+        </thead>
+
+        <tbody></tbody>
+
+      </table>
+
+      <button type="button" onclick="agregarIntegrante()">
+
+        Agregar integrante
+
+      </button>
+
+    </section>
+
+    <!-- DOCUMENTOS -->
+
+    <!-- DOCUMENTOS --> 
+
+     <section class="card" id="seccionDocumentos"> 
+
+      <h3>6. Documentos Adjuntos</h3> 
+      
+      
+        <label>Copia de cédula o tarjeta de menor</label> 
+      
+        <input 
+          type="file" 
+          id="docCedula"
+          name="docCedula"
+          accept=".pdf,.jpg,.jpeg,.png"
+        > 
+      
+      
+        <label>Constancia salarial</label> 
+      
+        <input 
+          type="file" 
+          id="docSalario"
+          name="docSalario"
+          accept=".pdf,.jpg,.jpeg,.png"
+        > 
+      
+      
+        <label>Declaración jurada de ingresos</label> 
+      
+        <input 
+          type="file" 
+          id="docDeclaracion"
+          name="docDeclaracion"
+          accept=".pdf,.jpg,.jpeg,.png"
+        > 
+      
+      
+        <label>Constancia de pensión</label> 
+      
+        <input 
+          type="file" 
+          id="docPension"
+          name="docPension"
+          accept=".pdf,.jpg,.jpeg,.png"
+        > 
+      
+      
+        <label>Certificado médico</label> 
+      
+        <input 
+          type="file" 
+          id="docMedico"
+          name="docMedico"
+          accept=".pdf,.jpg,.jpeg,.png"
+        > 
+      
+      
+        <label>Otros documentos</label> 
+      
+        <input 
+          type="file" 
+          id="docOtros"
+          name="docOtros"
+          multiple
+          accept=".pdf,.jpg,.jpeg,.png"
+        > 
+      
+     </section>
+
+    <!-- FIRMA -->
+
+    <section class="card" id="seccionFirma">
+
+      <h3>7. Firma del Encargado Legal</h3>
+
+      <p>El encargado legal debe firmar dentro del recuadro.</p>
+
+      <canvas id="firmaCanvas"></canvas>
+
+      <div class="firma-botones">
+
+        <button type="button" onclick="limpiarFirma()">
+
+          Limpiar firma
+
+        </button>
+
+      </div>
+
+    </section>
+
+    <!-- BOTÓN -->
+
+    <button
+    type="submit"
+    class="guardar"
+    id="btnEnviar"
+>
+    Guardar solicitud
+</button>
+
+  </form>
+
+</main>
+
+<footer>
+
+  <p>CTP Cañas | Ministerio de Educación Pública</p>
+
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
